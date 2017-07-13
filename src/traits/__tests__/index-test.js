@@ -34,7 +34,7 @@ describe('Registry', () => {
     ['light-control', 'LightControl'],
     ['move', 'Move'],
     ['physics', 'Physics'],
-    // 'pickupable', 'Pickupable'],
+    ['pickupable', 'Pickupable'],
     ['projectile', 'Projectile'],
     ['rotate', 'Rotate'],
     ['solid', 'Solid'],

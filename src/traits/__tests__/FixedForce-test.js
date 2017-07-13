@@ -4,7 +4,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {FixedForce} = require('@snakesilk/platform-traits');
 
-const factory = require('../FixedForce.js');
+const factory = require('..')['fixed-force'];
 
 describe('FixedForce factory', function() {
   let parser;

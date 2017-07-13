@@ -4,7 +4,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {Solid} = require('@snakesilk/platform-traits');
 
-const factory = require('../Solid.js');
+const factory = require('..')['solid'];
 
 describe('Solid factory', function() {
   let parser;

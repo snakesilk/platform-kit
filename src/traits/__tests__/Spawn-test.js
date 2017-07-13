@@ -6,7 +6,7 @@ const {Entity, Loader, World} = require('@snakesilk/engine');
 const {Parser} = require('@snakesilk/xml-loader');
 const {Spawn} = require('@snakesilk/platform-traits');
 
-const factory = require('../Spawn.js');
+const factory = require('..')['spawn'];
 
 describe('Spawn factory', function() {
   const MockEntity1 = Symbol('mock entity 1');

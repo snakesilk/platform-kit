@@ -4,7 +4,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {Pickupable} = require('@snakesilk/platform-traits');
 
-const factory = require('../Pickupable.js');
+const factory = require('..')['pickupable'];
 
 describe('Pickupable factory', function() {
   let parser;

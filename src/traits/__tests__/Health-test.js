@@ -4,7 +4,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {Health} = require('@snakesilk/platform-traits');
 
-const factory = require('../Health.js');
+const factory = require('..')['health'];
 
 describe('Health factory', function() {
   let parser, trait;

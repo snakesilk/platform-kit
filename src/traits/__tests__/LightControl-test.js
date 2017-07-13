@@ -4,7 +4,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {LightControl} = require('@snakesilk/platform-traits');
 
-const factory = require('../LightControl.js');
+const factory = require('..')['light-control'];
 
 describe('LightControl factory', function() {
   let parser;

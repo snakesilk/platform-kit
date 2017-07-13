@@ -4,7 +4,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {Jump} = require('@snakesilk/platform-traits');
 
-const factory = require('../Jump.js');
+const factory = require('..')['jump'];
 
 describe('Jump factory', function() {
   let parser;

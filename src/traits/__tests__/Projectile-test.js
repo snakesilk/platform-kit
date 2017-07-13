@@ -5,7 +5,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {Projectile} = require('@snakesilk/platform-traits');
 
-const factory = require('../Projectile.js');
+const factory = require('..')['projectile'];
 
 describe('Projectile factory', function() {
   let parser, trait;

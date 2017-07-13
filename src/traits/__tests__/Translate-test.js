@@ -4,7 +4,7 @@ const {createNode} = require('@snakesilk/testing/xml');
 const {Parser} = require('@snakesilk/xml-loader');
 const {Translate} = require('@snakesilk/platform-traits');
 
-const factory = require('../Translate.js');
+const factory = require('..')['translate'];
 
 describe('Translate factory', function() {
   let parser;

@@ -23,7 +23,7 @@ module.exports = {
   'light-control': require('./LightControl'),
   'move': createFactory(Traits.Move),
   'physics': createFactory(Traits.Physics),
-  // 'pickupable': require('./Pickupable'),
+  'pickupable': require('./Pickupable'),
   'projectile': require('./Projectile'),
   'rotate': createFactory(Traits.Rotate),
   'solid': require('./Solid'),

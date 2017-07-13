@@ -6,7 +6,7 @@ const {Pickupable} = require('@snakesilk/platform-traits');
 
 const factory = require('../Pickupable.js');
 
-describe.skip('Pickupable factory', function() {
+describe('Pickupable factory', function() {
   let parser;
 
   beforeEach(() => {
@@ -25,6 +25,29 @@ describe.skip('Pickupable factory', function() {
     beforeEach(() => {
       const node = createNode(`<trait/>`);
       trait = factory(parser, node)();
+    });
+
+    it('has no properties', () => {
+      expect(trait.properties).to.eql({});
+    });
+  });
+
+  describe('when properties defined', () => {
+    let trait;
+
+    beforeEach(() => {
+      const node = createNode(`<trait>
+        <property type="flower"/>
+        <property kind="rollover"/>
+      </trait>`);
+      trait = factory(parser, node)();
+    });
+
+    it('has properties set', () => {
+      expect(trait.properties).to.eql({
+        type: 'flower',
+        kind: 'rollover',
+      });
     });
   });
 });

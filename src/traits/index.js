@@ -12,7 +12,6 @@ module.exports = {
   'death-zone': createFactory(Traits.DeathZone),
   'disappearing': createFactory(Traits.Disappearing),
   'environment': createFactory(Traits.Environment),
-  'fallaway': createFactory(Traits.Fallaway),
   'fixed-force': require('./FixedForce'),
   'glow': createFactory(Traits.Glow),
   'health': require('./Health'),

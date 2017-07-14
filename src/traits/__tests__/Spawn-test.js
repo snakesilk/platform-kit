@@ -44,21 +44,21 @@ describe('Spawn factory', function() {
     it('raises an exception', () => {
       expect(() => {
         const node = createNode(`<trait name="spawn">
-          <item event="recycle" object="UndefinedObject"/>
+          <entity event="recycle" id="UndefinedObject"/>
         </trait>`);
         factory(parser, node)();
       }).to.throwError(error => {
         expect(error).to.be.a(Error);
-        expect(error.message).to.be('No resource "UndefinedObject" of type object');
+        expect(error.message).to.be('No resource "UndefinedObject" of type entity.');
       });
     });
   });
 
   describe('when parsing with single item defined', () => {
     beforeEach(() => {
-      parser.loader.resourceManager.addObject('Explosion', MockEntity1);
+      parser.loader.resourceManager.addEntity('Explosion', MockEntity1);
       const node = createNode(`<trait>
-          <item event="recycle" object="Explosion"/>
+          <entity event="recycle" id="Explosion"/>
       </trait>`);
       trait = factory(parser, node)();
     });
@@ -75,13 +75,13 @@ describe('Spawn factory', function() {
 
   describe('when parsing with multiple items', () => {
     beforeEach(() => {
-      parser.loader.resourceManager.addObject('Explosion', MockEntity1);
-      parser.loader.resourceManager.addObject('Blast', MockEntity2);
+      parser.loader.resourceManager.addEntity('Explosion', MockEntity1);
+      parser.loader.resourceManager.addEntity('Blast', MockEntity2);
       const node = createNode(`<trait name="spawn">
-          <item event="recycle" object="Explosion"/>
-          <item event="blast" object="Blast">
+          <entity event="recycle" id="Explosion"/>
+          <entity event="blast" id="Blast">
               <offset x="13.2341" y="11.123" z="-5.412"/>
-          </item>
+          </entity>
       </trait>`);
       trait = factory(parser, node)();
     });

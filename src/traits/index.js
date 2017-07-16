@@ -19,7 +19,7 @@ module.exports = {
   'invincibility': createFactory(Traits.Invincibility),
   'jump': require('./Jump'),
   'lifetime': createFactory(Traits.Lifetime),
-  'light': createFactory(Traits.Light),
+  'light': require('./Light'),
   'light-control': require('./LightControl'),
   'move': createFactory(Traits.Move),
   'physics': createFactory(Traits.Physics),

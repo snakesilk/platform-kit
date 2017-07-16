@@ -17,6 +17,7 @@ describe('Registry', () => {
 
   [
     ['attach', 'Attach'],
+    ['blink', 'Blink'],
     ['climbable', 'Climbable'],
     ['climber', 'Climber'],
     ['contact-damage', 'ContactDamage'],

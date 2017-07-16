@@ -5,6 +5,7 @@ const {createFactory} = Parser.TraitParser;
 
 module.exports = {
   'attach': createFactory(Traits.Attach),
+  'blink': createFactory(Traits.Blink),
   'climbable': createFactory(Traits.Climbable),
   'climber': createFactory(Traits.Climber),
   'contact-damage': createFactory(Traits.ContactDamage),

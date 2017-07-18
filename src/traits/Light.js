@@ -37,7 +37,8 @@ function parsePointLight(parser, node) {
             distance
         );
         applyLocation(light);
-        return light;
+        const lamp = new Light.Lamp(light);
+        return lamp;
     };
 }
 
@@ -62,7 +63,8 @@ function parseSpotLight(parser, node) {
         );
         applyLocation(light);
         applyTarget(light);
-        return light;
+        const lamp = new Light.Lamp(light);
+        return lamp;
     };
 }
 
@@ -80,8 +82,8 @@ function factory(parser, node) {
 
     return function createLight() {
         const trait = new Light();
-        lampFactories.forEach(createLight => {
-            trait.addLamp(createLight());
+        lampFactories.forEach(createLamp => {
+            trait.addLamp(createLamp());
         });
         return trait;
     };

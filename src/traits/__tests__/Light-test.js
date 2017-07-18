@@ -71,6 +71,10 @@ describe('Light factory', function() {
             it('has default intensity', () => {
               expect(lamp.intensity).to.be(1);
             });
+
+            it('is on by default', () => {
+              expect(lamp.state).to.be(true);
+            });
           });
 
           describe('with position', () => {
@@ -91,6 +95,27 @@ describe('Light factory', function() {
                 x: 12.32,
                 y: 512.2,
                 z: 12.3,
+              });
+            });
+          });
+
+          [
+            ['on', 1],
+            ['off', 0],
+          ].forEach(([attr, intensity]) => {
+            describe(`with state "${attr}"`, () => {
+              beforeEach(() => {
+                const node = createNode(`<trait>
+                  <lamps>
+                    <point state="${attr}"/>
+                  </lamps>
+                </trait>`);
+                trait = factory(parser, node)();
+                lamp = trait.lamps[0];
+              });
+
+              it(`light is ${attr}`, () => {
+                expect(lamp.light.intensity).to.be(intensity);
               });
             });
           });

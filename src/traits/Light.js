@@ -11,6 +11,20 @@ function parseLocation(parser, node) {
     };
 }
 
+function parseState(parser, node) {
+    const state = node.getAttribute('state') === 'off'
+        ? false
+        : true;
+
+    return function applyState(lamp) {
+        if (state) {
+            lamp.on();
+        } else {
+            lamp.off();
+        }
+    };
+}
+
 function parseTarget(parser, node) {
     const targetNode = node.querySelector('target');
     const target = targetNode && parser.getVector3(targetNode);
@@ -29,6 +43,7 @@ function parsePointLight(parser, node) {
     const distance = parser.getFloat(node, 'distance') || undefined;
 
     const applyLocation = parseLocation(parser, node);
+    const applyState = parseState(parser, node);
 
     return function createPointLight() {
         const light = new PointLight(
@@ -38,6 +53,7 @@ function parsePointLight(parser, node) {
         );
         applyLocation(light);
         const lamp = new Light.Lamp(light);
+        applyState(lamp);
         return lamp;
     };
 }
@@ -52,6 +68,7 @@ function parseSpotLight(parser, node) {
 
     const applyLocation = parseLocation(parser, node);
     const applyTarget = parseTarget(parser, node);
+    const applyState = parseState(parser, node);
 
     return function createSpotLight() {
         const light = new SpotLight(
@@ -64,6 +81,7 @@ function parseSpotLight(parser, node) {
         applyLocation(light);
         applyTarget(light);
         const lamp = new Light.Lamp(light);
+        applyState(lamp);
         return lamp;
     };
 }

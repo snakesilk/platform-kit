@@ -3,9 +3,8 @@ const {Spawn} = require('@snakesilk/platform-traits');
 
 function factory(parser, node) {
     const entityNodes = node.getElementsByTagName('entity');
-    const items = [];
 
-    for (let entityNode, i = 0; entityNode = entityNodes[i]; ++i) {
+    return Promise.all([...entityNodes].map(entityNode => {
         const offsetNode = entityNode.getElementsByTagName('offset')[0];
         let offset;
         if (offsetNode) {
@@ -13,17 +12,20 @@ function factory(parser, node) {
         }
         const event = parser.getAttr(entityNode, 'event') || 'death';
         const entityId = parser.getAttr(entityNode, 'id');
-        const constructor = parser.loader.resourceManager.get('entity', entityId);
-        items.push([event, constructor, offset]);
-    }
-
-    return function createSpawn() {
-        const trait = new Spawn();
-        items.forEach(function(arg) {
-            trait.addItem(arg[0], arg[1], arg[2]);
+        return parser.loader.resourceManager.get('entity', entityId)
+        .then(constructor => {
+            return [event, constructor, offset];
         });
-        return trait;
-    };
+    }))
+    .then(items => {
+        return function createSpawn() {
+            const trait = new Spawn();
+            items.forEach(([event, constructor, offset]) => {
+                trait.addItem(event, constructor, offset);
+            });
+            return trait;
+        };
+    });
 }
 
 module.exports = factory;

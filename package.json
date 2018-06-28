@@ -10,12 +10,12 @@
     "watch": "yarn run build -- --watch"
   },
   "dependencies": {
-    "@snakesilk/platform-traits": ">=0.4.0",
-    "@snakesilk/xml-loader": ">=0.7.0",
+    "@snakesilk/platform-traits": ">=0.5.0",
+    "@snakesilk/xml-loader": ">=0.12.1",
     "three": "0.70"
   },
   "devDependencies": {
-    "@snakesilk/engine": ">=0.10.0",
+    "@snakesilk/engine": ">=0.14.0",
     "@snakesilk/testing": ">=0.2.1",
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",

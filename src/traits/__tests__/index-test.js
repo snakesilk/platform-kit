@@ -51,8 +51,12 @@ describe('Registry', () => {
 
       it(`returns a factory that creates ${traitName}`, () => {
         const node = createNode(`<trait name="${shortName}"/>`);
-        trait = parser.parseTrait(node)();
-        expect(trait).to.be.a(PlatformTraits[traitName]);
+
+        return parser.parseTrait(node)
+        .then(factory => {
+          const trait = factory();
+          expect(trait).to.be.a(PlatformTraits[traitName]);
+        });
       });
     });
   });
